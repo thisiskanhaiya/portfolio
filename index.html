@@ -3,432 +3,843 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meet Ileka - A School of Excellence</title>
+    <title>Sayali Lakade - Data Analyst | AI/ML Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Global Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            box-sizing: border-box;
         }
-        
-        /* Container */
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e6ed;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         /* Header */
         header {
-            background-color: #3a506b;
-            color: white;
-            padding: 20px 0;
-            position: relative;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(12, 12, 12, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(64, 224, 208, 0.2);
+            z-index: 1000;
+            padding: 1rem 0;
         }
-        
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: bold;
+            color: #40e0d0;
+            text-decoration: none;
         }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
+            gap: 2rem;
         }
-        
-        .nav-links li {
-            margin-left: 20px;
-        }
-        
+
         .nav-links a {
-            color: white;
+            color: #e0e6ed;
             text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #c9d6df;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background-color: #5bc0de;
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 20px;
-            max-width: 800px;
-            margin: 0 auto 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: #0c2461;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .btn:hover {
-            background-color: #1e3799;
-            transform: translateY(-2px);
-        }
-        
-        /* Our Pillars Section */
-        .pillars {
-            padding: 80px 0;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-header h2 {
-            font-size: 36px;
-            color: #3a506b;
+            transition: color 0.3s ease;
             position: relative;
-            display: inline-block;
         }
-        
-        .section-header h2:after {
+
+        .nav-links a:hover {
+            color: #40e0d0;
+        }
+
+        .nav-links a::after {
             content: '';
             position: absolute;
-            width: 60%;
-            height: 3px;
-            background-color: #5bc0de;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #40e0d0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%2340e0d0;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%2340e0d0;stop-opacity:0"/></radialGradient></defs><circle cx="20" cy="20" r="2" fill="url(%23g)"/><circle cx="80" cy="40" r="1.5" fill="url(%23g)"/><circle cx="40" cy="80" r="1" fill="url(%23g)"/></svg>') repeat;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-20px) translateX(10px); }
+            100% { transform: translateY(0px) translateX(0px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #40e0d0, #00bfff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #a0a8b0;
+            margin-bottom: 2rem;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: #c0c8d0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #40e0d0, #00bfff);
+            color: #0c0c0c;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(64, 224, 208, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #40e0d0;
+            border: 2px solid #40e0d0;
+        }
+
+        .btn-secondary:hover {
+            background: #40e0d0;
+            color: #0c0c0c;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #40e0d0;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #40e0d0, #00bfff);
+            border-radius: 2px;
         }
-        
-        .pillars-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 30px;
-        }
-        
-        .pillar-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            flex: 1 1 calc(50% - 30px);
-            min-width: 300px;
-        }
-        
-        .pillar-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .pillar-header {
-            background-color: #3a506b;
-            color: white;
-            padding: 15px 20px;
-        }
-        
-        .pillar-content {
-            padding: 20px;
-        }
-        
-        .teacher-profile {
-            display: flex;
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
             align-items: center;
-            margin-bottom: 20px;
         }
-        
-        .teacher-img {
-            width: 40px;
-            height: 20px;
-            border-radius: 100%;
-            background-color: #ddd;
-            margin-right: 15px;
+
+        .about-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #40e0d0, #00bfff);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
-            color: #777;
+            font-size: 4rem;
+            color: #0c0c0c;
         }
-        
-        .teacher-info h4 {
-            margin: 0 0 5px;
+
+        .about-text {
+            font-size: 1.1rem;
+            color: #c0c8d0;
         }
-        
-        .teacher-info p {
-            margin: 0;
-            color: #666;
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        
-        /* Footer */
-        footer {
-            background-color: #3a506b;
-            color: white;
-            padding: 40px 0 20px;
+
+        .skill-category {
+            background: rgba(26, 26, 46, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(64, 224, 208, 0.1);
+            backdrop-filter: blur(10px);
         }
-        
-        .footer-content {
+
+        .skill-category h3 {
+            color: #40e0d0;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skills-list {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            gap: 0.5rem;
         }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 20px;
+
+        .skill-tag {
+            background: rgba(64, 224, 208, 0.1);
+            color: #40e0d0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(64, 224, 208, 0.2);
         }
-        
-        .footer-column h3 {
-            margin-bottom: 20px;
-            font-size: 18px;
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
         }
-        
-        .footer-column ul {
-            list-style: none;
-            padding: 0;
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(135deg, #40e0d0, #00bfff);
         }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: rgba(26, 26, 46, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(64, 224, 208, 0.1);
+            backdrop-filter: blur(10px);
         }
-        
-        .footer-column a {
-            color: #c9d6df;
-            text-decoration: none;
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: #40e0d0;
+            border-radius: 50%;
+            border: 3px solid #0c0c0c;
         }
-        
-        .footer-column a:hover {
-            color: white;
-            text-decoration: underline;
+
+        .experience-item h3 {
+            color: #40e0d0;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
         }
-        
-        .copyright {
+
+        .experience-item .company {
+            color: #00bfff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .duration {
+            color: #a0a8b0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(26, 26, 46, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(64, 224, 208, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(64, 224, 208, 0.1);
+        }
+
+        .project-card h3 {
+            color: #40e0d0;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            color: #c0c8d0;
+            margin-bottom: 1rem;
+        }
+
+        .project-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tool-tag {
+            background: rgba(0, 191, 255, 0.1);
+            color: #00bfff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .education-card {
+            background: rgba(26, 26, 46, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(64, 224, 208, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .education-card h3 {
+            color: #40e0d0;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .institution {
+            color: #00bfff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .year {
+            color: #a0a8b0;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .percentage {
+            color: #40e0d0;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-content {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 20px;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        
-        /* Responsive */
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #c0c8d0;
+        }
+
+        .contact-item i {
+            color: #40e0d0;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(64, 224, 208, 0.1);
+            border: 1px solid rgba(64, 224, 208, 0.2);
+            border-radius: 50%;
+            color: #40e0d0;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #40e0d0;
+            color: #0c0c0c;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(12, 12, 12, 0.9);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(64, 224, 208, 0.2);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .pillars-container {
-                flex-direction: column;
+            .nav-links {
+                display: none;
             }
-            
-            .pillar-card {
-                flex: 1 1 100%;
-            }
-            
+
             .hero h1 {
-                font-size: 36px;
+                font-size: 2.5rem;
             }
-            
-            .hero p {
-                font-size: 18px;
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #40e0d0;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00bfff;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Ileka School</div>
-                <ul class="nav-links">
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Academics</a></li>
-                    <li><a href="#">Admissions</a></li>
-                    <li><a href="#">Campus Life</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav class="container">
+            <a href="#home" class="logo">SL</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    
+
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="container">
-            <h1>Meet Ileka</h1>
-            <p>A place where innovation meets tradition, where young minds are nurtured to become tomorrow's leaders, thinkers, and changemakers.</p>
-            <a href="#" class="btn">Apply Now</a>
+            <div class="hero-content">
+                <h1>Sayali Lakade</h1>
+                <p class="subtitle">Data Analyst | AI/ML Developer</p>
+                <p class="description">
+                    Data Science enthusiast with strong skills in Python and Machine Learning algorithms. 
+                    Passionate about turning data into actionable insights and building intelligent solutions 
+                    that drive business growth.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <i class="fas fa-code"></i> View Projects
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
-    
-    <!-- Our Pillars Section -->
-    <section class="pillars">
+
+    <!-- About Section -->
+    <section id="about">
         <div class="container">
-            <div class="section-header">
-                <h2>Our Pillars</h2>
-                <p>At Ileka, our educational approach stands on four essential foundations that ensure holistic development for every student.</p>
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="about-text">
+                    <p>
+                        I am a dedicated Data Science professional with a Master's degree in Data Science and extensive 
+                        hands-on experience in machine learning, data analysis, and AI development. My journey in data 
+                        science has equipped me with the expertise to develop predictive models, create interactive 
+                        dashboards, and deploy scalable solutions.
+                    </p>
+                    <p>
+                        With internship experience at leading tech companies, I have worked on diverse projects ranging 
+                        from crop yield prediction to healthcare chatbots. I am proficient in Python, SQL, and various 
+                        ML frameworks, and I'm passionate about leveraging AI to solve real-world problems.
+                    </p>
+                </div>
             </div>
-            
-            <div class="pillars-container">
-                <!-- Teachers Pillar -->
-                <div class="pillar-card">
-                    <div class="pillar-header">
-                        <h3>Teachers</h3>
-                    </div>
-                    <div class="pillar-content">
-                        <p>Our dedicated educators bring passion, expertise, and innovative teaching methods to inspire a love for learning.</p>
-                        
-                        <div class="teacher-profile">
-                            <div class="teacher-img">
-                                <img src="" alt="Teacher profile">
-                            </div>
-                            <div class="teacher-info">
-                                <h4>Naynish Kuchekar</h4>
-                                <p>Sanskrit & Mimansa</p>
-                                <p>Studied in traditional Gurukul</p>
-                            </div>
-                        </div>
-                        
-                        <div class="teacher-profile">
-                            <div class="teacher-img">
-                                <img src="/api/placeholder/80/80" alt="Teacher profile">
-                            </div>
-                            <div class="teacher-info">
-                                <h4>Prof. Michael Chen</h4>
-                                <p>Creative Arts Director</p>
-                                <p>Award-winning artist with a passion for integrating arts across the curriculum.</p>
-                            </div>
-                        </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming & Tools</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">RDBMS</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">Power BI</span>
                     </div>
                 </div>
-                
-                <!-- Environment Pillar -->
-                <div class="pillar-card">
-                    <div class="pillar-header">
-                        <h3>Our Campus</h3>
-                    </div>
-                    <div class="pillar-content">
-                        <p>Our state-of-the-art campus provides the perfect setting for academic excellence and personal growth.</p>
-                        <p>Nestled in 15 acres of beautifully landscaped grounds, Ileka's campus features modern classrooms, specialized labs, a comprehensive library, sports facilities, and creative spaces that inspire learning and collaboration.</p>
-                        <p>Our sustainable design incorporates natural light, energy-efficient systems, and outdoor learning areas that connect students with nature while fostering environmental responsibility.</p>
-                    </div>
-                </div>
-                
-                <!-- Philosophy Pillar -->
-                <div class="pillar-card">
-                    <div class="pillar-header">
-                        <h3>Philosophy</h3>
-                    </div>
-                    <div class="pillar-content">
-                        <p>At Ileka, we believe in nurturing the whole child through a balanced approach to education.</p>
-                        <p>Our educational philosophy centers on four key principles:</p>
-                        <ul>
-                            <li><strong>Inquiry-Based Learning:</strong> Encouraging curiosity and critical thinking</li>
-                            <li><strong>Global Perspective:</strong> Preparing students for an interconnected world</li>
-                            <li><strong>Character Development:</strong> Building integrity, empathy, and resilience</li>
-                            <li><strong>Personalized Pathways:</strong> Recognizing each student's unique potential</li>
-                        </ul>
-                        <p>Through this approach, we empower students to become lifelong learners who contribute meaningfully to society.</p>
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Linear Regression</span>
+                        <span class="skill-tag">Decision Tree</span>
+                        <span class="skill-tag">Random Forest</span>
+                        <span class="skill-tag">SVM</span>
+                        <span class="skill-tag">XGBoost</span>
+                        <span class="skill-tag">CatBoost</span>
                     </div>
                 </div>
-                
-                <!-- Advisers Pillar -->
-                <div class="pillar-card">
-                    <div class="pillar-header">
-                        <h3>Advisers & Mentors</h3>
-                    </div>
-                    <div class="pillar-content">
-                        <p>Our distinguished advisory board brings diverse expertise to guide our educational vision.</p>
-                        
-                        <div class="teacher-profile">
-                            <div class="teacher-img">
-                                <img src="/api/placeholder/80/80" alt="Adviser profile">
-                            </div>
-                            <div class="teacher-info">
-                                <h4>Dr. Elena Rodriguez</h4>
-                                <p>Educational Innovation Specialist</p>
-                                <p>Former university dean with expertise in curriculum development and educational technology.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="teacher-profile">
-                            <div class="teacher-img">
-                                <img src="/api/placeholder/80/80" alt="Mentor profile">
-                            </div>
-                            <div class="teacher-info">
-                                <h4>William Okafor</h4>
-                                <p>Community Engagement Director</p>
-                                <p>Social entrepreneur focused on creating educational opportunities and building school-community partnerships.</p>
-                            </div>
-                        </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-bar"></i> Data Science Libraries</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">Scikit-Learn</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">NLTK</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <h3>AI/ML Developer Intern</h3>
+                    <div class="company">Farmoid Robotech Pvt. Ltd</div>
+                    <div class="duration">May 2024 - October 2024</div>
+                    <p>
+                        Developed and optimized machine learning models for crop yield prediction using historical 
+                        weather data, soil conditions, and crop management practices. Implemented various algorithms 
+                        including Random Forest, Gradient Boosting, and CatBoost, comparing their performance to 
+                        select the best model for deployment.
+                    </p>
+                </div>
+                <div class="experience-item">
+                    <h3>Data Science Intern</h3>
+                    <div class="company">Softtrine Solutions Pvt. Ltd</div>
+                    <div class="duration">February 2024 - July 2024</div>
+                    <p>
+                        Developed interactive and dynamic dashboards using Power BI to visualize key performance metrics. 
+                        Assisted in the creation and implementation of machine learning models to increase prediction 
+                        accuracy. Gained hands-on experience with Python, SQL, Machine Learning, and Power BI. 
+                        Performed data scraping from Visual Crossing and merged data according to weather parameters.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Healthcare Chatbot</h3>
+                    <p>
+                        Built a rule-based healthcare chatbot to respond to predefined medical FAQs, appointment 
+                        queries, and health-related guidance. Designed the Q&A flow using Python with structured 
+                        logic and implemented basic NLP preprocessing.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Python</span>
+                        <span class="tool-tag">NLTK</span>
+                        <span class="tool-tag">NLP</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>House Price Prediction</h3>
+                    <p>
+                        Developed a house price prediction model using advanced machine learning algorithms with 90% 
+                        accuracy. Integrated interactive visualizations for user-friendly insights into property valuation.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Python</span>
+                        <span class="tool-tag">Streamlit</span>
+                        <span class="tool-tag">Scikit-learn</span>
+                        <span class="tool-tag">Kaggle</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Crop Yield Prediction</h3>
+                    <p>
+                        Developed machine learning models to predict crop yields using historical weather data, 
+                        soil conditions, and crop management practices. Compared multiple algorithms to optimize 
+                        prediction accuracy.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Random Forest</span>
+                        <span class="tool-tag">XGBoost</span>
+                        <span class="tool-tag">CatBoost</span>
+                        <span class="tool-tag">Data Scraping</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>M.Sc. Data Science</h3>
+                    <div class="institution">Dr. D.Y. Patil ACS College Pimpri, Pune</div>
+                    <div class="year">2022 - 2024</div>
+                    <div class="percentage">Percentage: 92.15%</div>
+                </div>
+                <div class="education-card">
+                    <h3>B.Sc. Statistics</h3>
+                    <div class="institution">New Arts Commerce and Science College, Ahmednagar</div>
+                    <div class="year">2019 - 2022</div>
+                    <div class="percentage">Percentage: 87.38%</div>
+                </div>
+                <div class="education-card">
+                    <h3>Certifications</h3>
+                    <div class="institution">NPTEL Online Certification</div>
+                    <div class="year">Introduction to R Software</div>
+                    <br>
+                    <div class="institution">Coursera</div>
+                    <div class="year">Generative AI For Everyone</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p>
+                    I'm always interested in new opportunities and collaborations. 
+                    Feel free to reach out if you'd like to discuss data science, AI, or potential projects.
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>7507830229</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>sayalilakade2@gmail.com</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:sayalilakade2@gmail.com" class="social-link" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Ileka School</h3>
-                    <p>Inspiring Excellence. Building Character. Creating Future Leaders.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Academics</a></li>
-                        <li><a href="#">Admissions</a></li>
-                        <li><a href="#">Campus Life</a></li>
-                        <li><a href="#">News & Events</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p>123 Education Avenue<br>Ileka Township, IL 60001</p>
-                    <p>Phone: (555) 123-4567<br>Email: info@ileka.edu</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Connect With Us</h3>
-                    <ul>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">YouTube</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2025 Ileka School. All Rights Reserved.</p>
-            </div>
+            <p>&copy; 2024 Sayali Lakade. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to navigation links based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Hero section is visible immediately
+        document.querySelector('#home').style.opacity = '1';
+        document.querySelector('#home').style.transform = 'translateY(0)';
+    </script>
 </body>
 </html>
