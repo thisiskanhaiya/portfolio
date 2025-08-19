@@ -5,60 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanhaiya Gawade - Java Developer</title>
     <style>
-        :root {
-            --primary-bg: #ffffff;
-            --secondary-bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text-primary: #1a202c;
-            --text-secondary: #4a5568;
-            --accent-color: #3182ce;
-            --accent-hover: #2c5aa0;
-            --border-color: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        .dark-mode {
-            --primary-bg: #1a202c;
-            --secondary-bg: #2d3748;
-            --card-bg: #2d3748;
-            --text-primary: #f7fafc;
-            --text-secondary: #cbd5e0;
-            --accent-color: #63b3ed;
-            --accent-hover: #4299e1;
-            --border-color: #4a5568;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --accent-light: rgba(59, 130, 246, 0.1);
+            --border: #475569;
+            --success: #10b981;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body.light {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --accent-light: rgba(59, 130, 246, 0.05);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
             color: var(--text-primary);
-            background: var(--primary-bg);
+            line-height: 1.6;
             transition: all 0.3s ease;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1rem;
         }
 
+        /* Header */
         .header {
-            background: var(--card-bg);
-            box-shadow: var(--shadow);
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
+            background: var(--bg-primary);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
         }
 
         .nav {
@@ -70,493 +71,675 @@
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--accent-color);
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .nav-links {
+        .nav-menu {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
 
-        .nav-links a {
+        .nav-menu a {
             text-decoration: none;
-            color: var(--text-primary);
+            color: var(--text-secondary);
             font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
             transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--accent-color);
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
         }
 
         .theme-toggle {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
             cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
 
         .theme-toggle:hover {
-            background: var(--accent-hover);
+            background: var(--accent-light);
+            border-color: var(--accent);
         }
 
-        .main {
-            margin-top: 80px;
-            padding: 2rem 0;
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
-            color: white;
-            padding: 4rem 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            margin-bottom: 3rem;
-            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero h1 {
-            font-size: 3rem;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient);
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
             margin-bottom: 1rem;
-            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto 2rem;
         }
 
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .contact-link {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 0.5rem 1rem;
+        .contact-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1rem;
+            border-radius: 0.75rem;
             text-decoration: none;
-            border-radius: 6px;
+            color: var(--text-primary);
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        .contact-link:hover {
-            background: rgba(255, 255, 255, 0.3);
+        .contact-item:hover {
+            background: var(--accent-light);
+            border-color: var(--accent);
             transform: translateY(-2px);
         }
 
+        .contact-icon {
+            font-size: 1.25rem;
+        }
+
+        /* Sections */
         .section {
-            background: var(--card-bg);
-            margin-bottom: 2rem;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
             transition: all 0.3s ease;
         }
 
-        .section:hover {
-            box-shadow: var(--shadow-lg);
+        .card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         }
 
-        .section h2 {
-            color: var(--accent-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-        }
-
+        /* Skills */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .skill-category h3 {
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
         }
 
-        .skill-tags {
+        .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
 
         .skill-tag {
-            background: var(--secondary-bg);
-            color: var(--text-secondary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid var(--border-color);
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Experience */
+        .experience-timeline {
+            position: relative;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
         }
 
         .experience-item {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: var(--secondary-bg);
-            border-radius: 8px;
-            border-left: 4px solid var(--accent-color);
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 3rem;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid var(--bg-primary);
         }
 
         .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
             margin-bottom: 1rem;
-            flex-wrap: wrap;
         }
 
         .experience-title {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--text-primary);
         }
 
         .experience-company {
-            color: var(--accent-color);
+            color: var(--accent);
             font-weight: 500;
+            margin: 0.25rem 0;
         }
 
         .experience-date {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .experience-description {
             color: var(--text-secondary);
-            font-size: 0.9rem;
         }
 
         .experience-description ul {
             list-style: none;
-            padding-left: 0;
+            padding: 0;
         }
 
         .experience-description li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
             position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
         .experience-description li::before {
-            content: "▶";
+            content: '▶';
             position: absolute;
             left: 0;
-            color: var(--accent-color);
+            color: var(--accent);
         }
 
-        .project-grid {
+        /* Projects */
+        .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .project-card {
-            background: var(--secondary-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
         }
 
         .project-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
+            border-color: var(--accent);
         }
 
         .project-title {
-            color: var(--accent-color);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
         }
 
-        .achievement-list {
-            list-style: none;
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
-        .achievement-list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--border-color);
-            position: relative;
-            padding-left: 2rem;
+        /* Achievements */
+        .achievements-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
 
-        .achievement-list li::before {
-            content: "🏆";
-            position: absolute;
-            left: 0;
-            top: 0.8rem;
+        .achievement-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
         }
 
-        .achievement-list li:last-child {
-            border-bottom: none;
+        .achievement-item:hover {
+            border-color: var(--success);
+            background: rgba(16, 185, 129, 0.05);
         }
 
+        .achievement-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-text {
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                gap: 1rem;
+            .nav-menu {
+                display: none;
             }
 
-            .nav-links {
-                gap: 1rem;
+            .mobile-menu-btn {
+                display: block;
             }
 
-            .hero h1 {
-                font-size: 2rem;
+            .hero {
+                padding-top: 6rem;
+                min-height: 90vh;
             }
 
-            .hero p {
-                font-size: 1rem;
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
 
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
+            .section {
+                padding: 3rem 0;
             }
 
-            .experience-header {
-                flex-direction: column;
-                gap: 0.5rem;
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
 
-            .main {
-                margin-top: 120px;
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .achievements-list {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-timeline::before {
+                left: 0.5rem;
+            }
+
+            .experience-item {
+                padding-left: 2rem;
+            }
+
+            .experience-item::before {
+                left: 0;
             }
         }
 
+        /* Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
+            transition: all 0.8s ease;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--gradient);
+            z-index: 1000;
+            transition: width 0.3s ease;
         }
     </style>
 </head>
 <body>
+    <div class="scroll-indicator"></div>
+    
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <div class="logo">Kanhaiya Gawade</div>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
+                <div class="logo">KG</div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#achievements">Achievements</a></li>
                 </ul>
-                <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+                <button class="mobile-menu-btn">☰</button>
             </nav>
         </div>
     </header>
 
-    <main class="main">
-        <div class="container">
-            <section class="hero fade-in">
-                <h1>Kanhaiya Gawade</h1>
-                <p>Java Developer and former SDET with experience in the banking sector. Proficient in designing and developing RESTful APIs with Java and Spring Boot, and building robust microservices applications.</p>
-                <div class="contact-links">
-                    <a href="http://linkedin.com/in/thisiskanhaiya/" class="contact-link">LinkedIn</a>
-                    <a href="tel:+917218174567" class="contact-link">📞 +91 7218174567</a>
-                    <a href="https://thisiskanhaiya.github.io/portfolio/" class="contact-link">Portfolio</a>
-                    <a href="mailto:mgawade7878@gmail.com" class="contact-link">📧 Email</a>
-                    <a href="https://github.com/thisiskanhaiya/" class="contact-link">GitHub</a>
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1>Kanhaiya Gawade</h1>
+                    <p class="subtitle">Java Developer</p>
+                    <p>Experienced in banking sector with expertise in RESTful APIs, Spring Boot, and microservices. Passionate about building scalable software solutions and improving efficiency through automation.</p>
+                    
+                    <div class="contact-grid">
+                        <a href="mailto:mgawade7878@gmail.com" class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span>Email</span>
+                        </a>
+                        <a href="tel:+917218174567" class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <span>+91 7218174567</span>
+                        </a>
+                        <a href="https://linkedin.com/in/thisiskanhaiya/" class="contact-item">
+                            <span class="contact-icon">💼</span>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/thisiskanhaiya/" class="contact-item">
+                            <span class="contact-icon">⚡</span>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="about" class="section fade-in">
-                <h2>About Me</h2>
-                <p>Java Developer and former SDET with experience in the banking sector, proficient in designing and developing RESTful APIs with Java and Spring Boot, and building robust microservices applications, including a loan management system with Kafka integrations. Demonstrated ability to improve efficiency through automation, having streamlined business tasks with CITS (Selenium based tool) and enhanced API testing with Ready-API. Passionate about creating high-quality, scalable software solutions in an agile environment.</p>
-            </section>
-
-            <section id="skills" class="section fade-in">
-                <h2>Skills</h2>
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">Skills & Technologies</h2>
                 <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Development</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">Spring Boot</span>
-                            <span class="skill-tag">Spring Data JPA</span>
-                            <span class="skill-tag">Hibernate</span>
-                            <span class="skill-tag">RESTful API</span>
-                            <span class="skill-tag">Microservices</span>
-                            <span class="skill-tag">Multithreading</span>
-                            <span class="skill-tag">Design Patterns</span>
-                            <span class="skill-tag">Messaging Queues</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">MySQL</span>
-                            <span class="skill-tag">Oracle</span>
-                            <span class="skill-tag">Swagger API</span>
+                    <div class="card fade-in">
+                        <div class="skill-category">
+                            <h3>Development</h3>
+                            <div class="skills-list">
+                                <span class="skill-tag">Java</span>
+                                <span class="skill-tag">Spring Boot</span>
+                                <span class="skill-tag">Spring Data JPA</span>
+                                <span class="skill-tag">Hibernate</span>
+                                <span class="skill-tag">RESTful API</span>
+                                <span class="skill-tag">Microservices</span>
+                                <span class="skill-tag">Multithreading</span>
+                                <span class="skill-tag">Design Patterns</span>
+                                <span class="skill-tag">Kafka</span>
+                                <span class="skill-tag">Docker</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <h3>Tools & Technologies</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Git-Copilot</span>
-                            <span class="skill-tag">OpenAI Lab45</span>
-                            <span class="skill-tag">Maven</span>
-                            <span class="skill-tag">Postman</span>
-                            <span class="skill-tag">Ready API</span>
-                            <span class="skill-tag">Jenkins</span>
-                            <span class="skill-tag">Oracle SQL</span>
-                            <span class="skill-tag">Debugging</span>
-                            <span class="skill-tag">Unit Testing</span>
-                            <span class="skill-tag">Documentation</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="experience" class="section fade-in">
-                <h2>Professional Experience</h2>
-                
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Java Developer</div>
-                            <div class="experience-company">Wipro Technologies - Client Project (Banking Domain)</div>
-                        </div>
-                        <div class="experience-date">Mar 2023 - Present</div>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Developed and maintained RESTful APIs for key banking processes (loan creation, onboarding, address, quotes, rates) using Java and Spring Boot</li>
-                            <li>Actively participated in Agile sprints, worked in SDLC STLC providing accurate effort estimations and adhering to delivery timelines</li>
-                            <li>Worked extensively on the controller layer, ensuring smooth integration and optimal functionality of all APIs</li>
-                            <li>Created and executed automation test packs for APIs using ReadyAPI to enhance testing efficiency and coverage</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Project Engineer (SDET)</div>
-                            <div class="experience-company">Wipro Technologies - Client Project (Banking Domain)</div>
-                        </div>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Automated APIs using ReadyAPI with JDBC data and streamlined business tasks using CITS (Selenium-based tool)</li>
-                            <li>Worked on robotics jobs and payment cycles, improving process efficiency</li>
-                            <li>Conducted a case study on improving affordability services in the banking domain</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Java Fullstack Development Training</div>
-                            <div class="experience-company">Chennai</div>
+                    <div class="card fade-in">
+                        <div class="skill-category">
+                            <h3>Databases & Tools</h3>
+                            <div class="skills-list">
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">Oracle</span>
+                                <span class="skill-tag">Maven</span>
+                                <span class="skill-tag">Postman</span>
+                                <span class="skill-tag">Ready API</span>
+                                <span class="skill-tag">Jenkins</span>
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">Swagger</span>
+                                <span class="skill-tag">Unit Testing</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="projects" class="section fade-in">
-                <h2>Personal Projects</h2>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <div class="project-title">Loan Management System</div>
-                        <p>Designed and implemented a scalable loan processing system utilizing microservices, messaging queues, and seamless document upload and validation directly into the database.</p>
+        <section id="experience" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">Professional Experience</h2>
+                <div class="experience-timeline">
+                    <div class="experience-item fade-in">
+                        <div class="experience-header">
+                            <h3 class="experience-title">Java Developer</h3>
+                            <p class="experience-company">Wipro Technologies - Banking Domain</p>
+                            <p class="experience-date">Mar 2023 - Present</p>
+                        </div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>Developed RESTful APIs for banking processes using Java & Spring Boot</li>
+                                <li>Participated in Agile sprints with accurate effort estimations</li>
+                                <li>Enhanced API testing efficiency using ReadyAPI automation</li>
+                                <li>Worked on controller layer integration and optimization</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="project-card">
-                        <div class="project-title">E-commerce Application</div>
-                        <p>Developed a robust online shopping platform with full user authentication, product management, and secure payment integrations, powered by RESTful APIs and dynamic front-end technologies.</p>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-title">Blog Application</div>
-                        <p>Engineered a content management system with post creation, editing, and sharing features, leveraging Spring Boot for back-end and Angular for a responsive user interface.</p>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-title">Weather Information REST Service</div>
-                        <p>Built a real-time weather data service using REST APIs, integrating with third-party data providers and delivering accurate forecasts in a microservice architecture.</p>
+
+                    <div class="experience-item fade-in">
+                        <div class="experience-header">
+                            <h3 class="experience-title">Project Engineer (SDET)</h3>
+                            <p class="experience-company">Wipro Technologies - Banking Domain</p>
+                        </div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>Automated APIs using ReadyAPI with JDBC integration</li>
+                                <li>Streamlined business tasks using CITS (Selenium-based tool)</li>
+                                <li>Improved payment cycles and robotics job efficiency</li>
+                                <li>Conducted case study on banking affordability services</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="achievements" class="section fade-in">
-                <h2>Achievements</h2>
-                <ul class="achievement-list">
-                    <li>Solved <strong>250+ DSA</strong> problems on LeetCode and GeeksforGeeks</li>
-                    <li>Case Study Premium Banking Business</li>
-                    <li><strong>AIR-01</strong> in International Robotics Competition (College)</li>
-                    <li>Employee of the Month</li>
-                </ul>
-            </section>
-        </div>
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card fade-in">
+                        <h3 class="project-title">Loan Management System</h3>
+                        <p class="project-description">Scalable loan processing system with microservices architecture, messaging queues, and seamless document upload validation.</p>
+                    </div>
+                    <div class="project-card fade-in">
+                        <h3 class="project-title">E-commerce Platform</h3>
+                        <p class="project-description">Full-stack shopping platform with user authentication, product management, and secure payment integrations using RESTful APIs.</p>
+                    </div>
+                    <div class="project-card fade-in">
+                        <h3 class="project-title">Blog Application</h3>
+                        <p class="project-description">Content management system with Spring Boot backend and Angular frontend, featuring post creation, editing, and sharing capabilities.</p>
+                    </div>
+                    <div class="project-card fade-in">
+                        <h3 class="project-title">Weather REST Service</h3>
+                        <p class="project-description">Real-time weather data service with third-party API integration and microservice architecture for accurate forecasts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">Achievements</h2>
+                <div class="achievements-list">
+                    <div class="achievement-item fade-in">
+                        <div class="achievement-icon">🏆</div>
+                        <p class="achievement-text"><strong>250+ DSA Problems</strong><br>Solved on LeetCode & GeeksforGeeks</p>
+                    </div>
+                    <div class="achievement-item fade-in">
+                        <div class="achievement-icon">📊</div>
+                        <p class="achievement-text"><strong>Case Study</strong><br>Premium Banking Business Analysis</p>
+                    </div>
+                    <div class="achievement-item fade-in">
+                        <div class="achievement-icon">🥇</div>
+                        <p class="achievement-text"><strong>AIR-01</strong><br>International Robotics Competition</p>
+                    </div>
+                    <div class="achievement-item fade-in">
+                        <div class="achievement-icon">⭐</div>
+                        <p class="achievement-text"><strong>Employee of the Month</strong><br>Outstanding Performance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script>
+        // Theme toggle
         function toggleTheme() {
             const body = document.body;
-            const button = document.querySelector('.theme-toggle');
+            const toggle = document.querySelector('.theme-toggle');
             
-            if (body.classList.contains('dark-mode')) {
-                body.classList.remove('dark-mode');
-                button.innerHTML = '🌙 Dark';
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.classList.add('dark-mode');
-                button.innerHTML = '☀️ Light';
-                localStorage.setItem('theme', 'dark');
-            }
+            body.classList.toggle('light');
+            toggle.textContent = body.classList.contains('light') ? '🌙' : '☀️';
+            
+            localStorage.setItem('theme', body.classList.contains('light') ? 'light' : 'dark');
         }
 
         // Load saved theme
         document.addEventListener('DOMContentLoaded', function() {
             const savedTheme = localStorage.getItem('theme');
-            const button = document.querySelector('.theme-toggle');
+            const toggle = document.querySelector('.theme-toggle');
             
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                button.innerHTML = '☀️ Light';
+            if (savedTheme === 'light') {
+                document.body.classList.add('light');
+                toggle.textContent = '🌙';
             }
 
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', function(e) {
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                 });
             });
 
-            // Add fade-in animation to sections on scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
+            // Intersection Observer for animations
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.animationDelay = '0.1s';
-                        entry.target.classList.add('fade-in');
+                        entry.target.classList.add('visible');
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.1 });
 
-            document.querySelectorAll('.section').forEach(section => {
-                observer.observe(section);
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+            // Scroll indicator
+            window.addEventListener('scroll', () => {
+                const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.scroll-indicator').style.width = scrolled + '%';
             });
         });
     </script>
